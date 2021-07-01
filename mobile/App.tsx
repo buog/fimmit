@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { StatusBar } from 'react-native';
 // import * as firebase from 'firebase';
 import auth from '@react-native-firebase/auth';
 
@@ -30,6 +31,9 @@ const App = () => {
   if(!user){
     return(
     <NavigationContainer>
+      <StatusBar
+        animated={true}
+        barStyle="dark-content"/>
       <Stack.Navigator screenOptions={{ headerShown: false}}>
       <Stack.Screen
             name = "auth"
@@ -41,6 +45,9 @@ const App = () => {
   }
   return(
     <NavigationContainer>
+      <StatusBar
+        animated={true}
+        barStyle="dark-content"/>
         <MainStack />
     </NavigationContainer>
   )
