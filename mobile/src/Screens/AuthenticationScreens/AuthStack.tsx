@@ -7,7 +7,8 @@ import {
   StyleSheet,
 } from "react-native";
 
-import MainAuthView from './MainAuthScreen';
+import MainAuthScreen from './MainAuthScreen';
+import SignInScreen from './SignInScreen';
 import OnboardingEmailScreen from './OnboardingEmailScreen';
 import OnboardingPasswordScreen from './OnboardingPasswordScreen';
 import OnboardingFullnameScreen from './OnboardingFullnameScreen';
@@ -18,7 +19,8 @@ const Stack = createStackNavigator();
 const AuthenticationStack = () => {
   return (
         <Stack.Navigator screenOptions={{ headerShown: false}}>
-            <Stack.Screen name="main" component={MainAuthView} />
+            <Stack.Screen name="main" component={MainAuthScreen} />
+            <Stack.Screen name = "signin" component = {SignInScreen} />
             <Stack.Screen name="email" component={OnboardingEmailScreen} />
             <Stack.Screen name="password" component={OnboardingPasswordScreen} />
             <Stack.Screen name="fullname" component={OnboardingFullnameScreen} />
@@ -26,8 +28,5 @@ const AuthenticationStack = () => {
         </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-});
 
 export default AuthenticationStack;

@@ -40,7 +40,7 @@ const CommitPreview = () => {
             <View style = {styles.tag}><Text style = {{fontSize: 15, fontFamily: "Arial", color: "#5d5d5d", fontWeight: "500"}}>🏋️ Weights</Text></View>
             <View style = {styles.tag}><Text style = {{fontSize: 15, fontFamily: "Arial", color: "#5d5d5d", fontWeight: "500"}}>🏃 Cardio</Text></View>
         </View>
-        <Text style = {{padding: 10, fontSize: 16, fontFamily: "Arial", color: "#3C3C3D"}}>
+        <Text style = {{padding: 10, fontFamily: "Arial", color: "#3C3C3D"}}>
             {`This is some description about the workout.
 
 3x3 benchpress 225

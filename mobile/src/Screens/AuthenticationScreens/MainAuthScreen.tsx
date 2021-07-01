@@ -61,7 +61,7 @@ const MainAuthScreen = ({navigation}: any) => {
             <TouchableOpacity style = {styles.createAccount} onPress = {() => navigation.navigate('email')}>
                 <Text style = {[styles.buttonText, {color: "white", fontSize: 15}]}>CREATE ACCOUNT</Text>
             </TouchableOpacity>
-            <TouchableOpacity style = {styles.signIn} onPress = {() => navigation.navigate('login')}>
+            <TouchableOpacity style = {styles.signIn} onPress = {() => navigation.navigate('signin')}>
                 <Text style = {[styles.buttonText, {color: "gray", fontSize: 15}]}>SIGN IN</Text>
             </TouchableOpacity>
         </View>

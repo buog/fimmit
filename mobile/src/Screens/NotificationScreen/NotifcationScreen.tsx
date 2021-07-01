@@ -34,6 +34,9 @@ const NotificationScreen = () => {
   return (
     <View style = {{flex: 1, backgroundColor: "white"}}>
         <SafeAreaView style = {{flex: 1, margin: 5,}}>
+          <View style = {{flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+            <Text style = {{flex: 1,fontWeight: "600", fontSize: 17, textAlign: "center"}}>Notifications</Text>
+          </View>
           <View style = {styles.notificationCard}>
             <FontAwesomeIcon
               name = "user-circle" size = {25} color = "gray"/>

@@ -43,9 +43,9 @@ const SearchModal = (props: any) => {
                 </View>
               </View>
               <ScrollView showsVerticalScrollIndicator = {false}>
-                {Array.from(Array(10).keys()).map(() => {
+                {Array.from(Array(10).keys()).map((value, index) => {
                   return(
-                    <View style = {{margin: 10}}>
+                    <View style = {{margin: 10}} key = {index}>
                       <UserPreview />
                     </View>
                   )

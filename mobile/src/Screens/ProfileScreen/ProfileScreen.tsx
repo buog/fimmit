@@ -63,9 +63,9 @@ const ProfileScreen = ({navigation}: any) => {
                         <CommitGrid />
                     </View>
                     <View>
-                        {Array.from(Array(10).keys()).map((commit) => {
+                        {Array.from(Array(10).keys()).map((commit, index) => {
                             return(
-                                <View style = {{flex: 1, backgroundColor: "white", marginVertical: 10, borderBottomWidth: 2, borderBottomColor: "#f5f5f5", alignItems: "center", paddingBottom: 20}}>
+                                <View key = {index} style = {{flex: 1, backgroundColor: "white", marginVertical: 10, borderBottomWidth: 2, borderBottomColor: "#f5f5f5", alignItems: "center", paddingBottom: 20}}>
                                     <CommitPreview />
                                 </View>
                             )
