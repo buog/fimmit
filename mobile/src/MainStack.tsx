@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 //icons
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
@@ -11,9 +12,21 @@ import ProfileScreen from './Screens/ProfileScreen/ProfileScreen';
 import FeedScreen from './Screens/FeedScreen/FeedScreen';
 import NotificationScreen from './Screens/NotificationScreen/NotifcationScreen';
 import ExploreScreen from './Screens/ExploreScreen/ExploreScreen';
+import SettingsScreen from './Screens/SettingsScreen/SettingsScreen';
 
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const ProfileStack = () => {
+  return(
+    <Stack.Navigator screenOptions={{ headerShown: false}}>
+      <Stack.Screen name="profile" component = {ProfileScreen} />
+      <Stack.Screen name="settings" component = {SettingsScreen} />
+    </Stack.Navigator>
+  )
+}
+
 
 const MainStack = () => {
   return (
@@ -44,11 +57,11 @@ const MainStack = () => {
           ),
         }}/>
       <Tab.Screen
-      name="Profile" component={ProfileScreen}
-      options = {{
-        tabBarIcon: ({ color, size }) => (
-          <FontAwesome5Icon name="user-alt" color={color} size={size} />
-        ),
+        name="profile" component={ProfileStack}
+        options = {{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5Icon name="user-alt" color={color} size={size} />
+          ),
       }}/>
       
     </Tab.Navigator>

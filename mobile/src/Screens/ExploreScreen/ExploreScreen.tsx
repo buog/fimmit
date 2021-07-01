@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -11,6 +11,7 @@ import {
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import CommitPreview from '../../GlobalComponents/CommitPreview';
+import SearchModal from '../../GlobalComponents/SearchModal';
 
 const styles = StyleSheet.create({
   profileCard: {
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     padding: 10,
+    margin: 5,
     //shadow
     shadowColor: "#000",
     shadowOffset: {
@@ -34,15 +36,16 @@ const styles = StyleSheet.create({
 });
 
 const ExploreScreen = () => {
+  const [searchModalVisible, setSearchModalVisible] = useState(false);
   return (
     <View style = {{flex: 1, backgroundColor: "white"}}>
       <SafeAreaView style = {{flex: 1,}}>
-        <View style = {{paddingBottom: 15, flexDirection: "row", alignItems: "center", marginHorizontal: 5,}}>
+        <TouchableOpacity style = {{paddingBottom: 10, flexDirection: "row", alignItems: "center", marginHorizontal: 5,}} onPress = {() => setSearchModalVisible(true)}>
             <View style = {{flexDirection: "row", backgroundColor: "#f5f5f5", padding: 10, borderRadius: 5,flex: 1}}>
               <FontAwesome5Icon name="search" size = {20} color = "lightgray"/>
               <Text style = {{fontSize: 17, paddingHorizontal: 10, color:"lightgray", fontWeight: "500"}}>Search</Text>
             </View>
-        </View>
+        </TouchableOpacity>
         <ScrollView showsVerticalScrollIndicator= {false} style = {{padding: 5,}}>
         {Array.from(Array(10).keys()).map((commit, index) => {
           return(
@@ -65,6 +68,9 @@ const ExploreScreen = () => {
         })}
         </ScrollView>
       </SafeAreaView>
+      <SearchModal
+        displayModal = {searchModalVisible}
+        setDisplayModal = {setSearchModalVisible}/>
     </View>
   );
 }
