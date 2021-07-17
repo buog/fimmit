@@ -31,7 +31,7 @@ const FeedScreen = () => {
                 <ScrollView showsVerticalScrollIndicator = {false}>
                     {Array.from(Array(10).keys()).map((commit, index) => {
                         return(
-                            <View style = {{flex: 1, backgroundColor: "white", marginVertical: 10, borderBottomWidth: 2, borderBottomColor: "#f5f5f5"}} key = {index}>
+                            <View style = {{flex: 1, backgroundColor: "white", marginVertical: 0, borderBottomWidth: 2, borderBottomColor: "#f5f5f5"}} key = {index}>
                                 <View style = {{paddingVertical: 15,}}>
                                     <View style = {{flexDirection: "row", alignItems: "center", marginHorizontal: 10,}}>
                                             <FontAwesomeIcon

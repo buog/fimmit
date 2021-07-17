@@ -83,58 +83,98 @@ const styles = StyleSheet.create({
 
 const CreateCommitModal = (props: any) => {
     const [description, setDescription] = useState("");
-  return (
-    <Modal
-        animationType="slide"
-        transparent={true}
-        visible={props.displayModal}>
-             <KeyboardAvoidingView style = {{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-                <SafeAreaView />
-                <TouchableOpacity style = {{flex: 1,}}  onPress={() => props.setDisplayModal(false)}>
-                </TouchableOpacity>
-                <View style = {styles.cardModal}>
-                    <View style = {{flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 5}}>
-                        <TouchableOpacity onPress = {() => props.setDisplayModal(false)}>
-                            <Text style = {{fontSize: 17, fontWeight: "500", color: "gray"}}>Cancel</Text>
-                        </TouchableOpacity>
-                        <Text style = {{fontSize: 16, fontWeight: "500"}}>Create Commit</Text>
-                        <TouchableOpacity style = {styles.createBtn}>
-                            <Text style = {styles.createBtnText}>Create</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style = {{flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
-                        <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>🏃Cardio</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>🏋️Weights</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>⚽️Sports</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>🧘Yoga</Text></TouchableOpacity>
-                    </View>
-                    <View style = {{backgroundColor: "#f5f5f5", paddingHorizontal: 10, borderRadius: 10, paddingVertical: 5,}}>
-                        <TextInput
-                            multiline={true}
-                            numberOfLines={4}
-                            onChangeText={(text: string) => setDescription(text)}
-                            placeholder = "Describe your workout"
-                            value={description}
-                            maxHeight={200}
-                            style = {{ height: 200}}/>
-                    </View>
-                    <View style = {{padding: 10,}}>
-                        <View style = {styles.bottomButton}>
-                            <Text style = {{fontSize: 16, color: "gray"}}>🕒 Workout time</Text>
-                            <Text style = {{fontSize: 17, fontWeight: "500",color: "gray"}}>1 : 30</Text>
+    const [workoutTimeHours, setWorkoutTimeHours] = useState("");
+    const [workoutTimeMin, setWorkoutTimeMin] = useState("");
+    const [calories, setCalories] = useState("");
+    const [location, setLocation] = useState("");
+
+    return (
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={props.displayModal}>
+                <KeyboardAvoidingView style = {{flex: 1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                    <SafeAreaView />
+                    <TouchableOpacity style = {{flex: 1,}}  onPress={() => props.setDisplayModal(false)}>
+                    </TouchableOpacity>
+                    <View style = {styles.cardModal}>
+                        <View style = {{flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 5}}>
+                            <TouchableOpacity onPress = {() => props.setDisplayModal(false)}>
+                                <Text style = {{fontSize: 17, fontWeight: "500", color: "gray"}}>Cancel</Text>
+                            </TouchableOpacity>
+                            <Text style = {{fontSize: 16, fontWeight: "500"}}>Create Commit</Text>
+                            <TouchableOpacity style = {styles.createBtn}>
+                                <Text style = {styles.createBtnText}>Create</Text>
+                            </TouchableOpacity>
                         </View>
-                        <View style = {styles.bottomButton}>
-                            <Text style = {{fontSize: 16, color: "gray"}}>🍗 Consumed calories</Text>
-                            <Text style = {{fontSize: 17, fontWeight: "500", color: "gray"}}>3000 cal</Text>
+                        <View style = {{flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+                            <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>🏃Cardio</Text></TouchableOpacity>
+                            <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>🏋️Weights</Text></TouchableOpacity>
+                            <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>⚽️Sports</Text></TouchableOpacity>
+                            <TouchableOpacity style = {styles.tag}><Text style = {{fontSize: 15,}}>🧘Yoga</Text></TouchableOpacity>
                         </View>
-                        <View style = {styles.bottomButton}>
-                            <Text style = {{fontSize: 16, color: "gray"}}>📍 Location</Text>
+                        <View style = {{backgroundColor: "#f5f5f5", paddingHorizontal: 10, borderRadius: 10, paddingVertical: 5,}}>
+                            <TextInput
+                                multiline={true}
+                                numberOfLines={4}
+                                onChangeText={(text: string) => setDescription(text)}
+                                placeholder = "Describe your workout"
+                                value={description}
+                                maxHeight={200}
+                                style = {{ height: 200}}/>
+                        </View>
+                        <View style = {{padding: 10,}}>
+                            <View style = {styles.bottomButton}>
+                                <Text style = {{fontSize: 16, color: "gray"}}>🕒 Workout time</Text>
+                                <View style = {{flexDirection: "row"}}>
+                                    <TextInput
+                                        value={workoutTimeHours}
+                                        onChangeText={(hour: string) => setWorkoutTimeHours(hour)}
+                                        placeholder = "1"
+                                        style = {{textAlign: "right"}}
+                                        keyboardType = 'numeric'
+                                        maxLength={1}/> 
+                                    <Text style = {{fontSize: 17, fontWeight: "500",color: "gray"}}>
+                                    &nbsp;:&nbsp;
+                                    </Text>
+                                    <TextInput
+                                        value={workoutTimeMin}
+                                        onChangeText={(min: string) => setWorkoutTimeMin(min)}
+                                        placeholder = "30"
+                                        style = {{textAlign: "right"}}
+                                        maxLength={2}/> 
+                                </View>
+                            </View>
+                            <View style = {styles.bottomButton}>
+                                <Text style = {{fontSize: 16, color: "gray"}}>🍗 Consumed calories</Text>
+                                <View style = {{flexDirection: "row"}}>
+                                    <TextInput
+                                        value={calories}
+                                        onChangeText={(calories: string) => setCalories(calories)}
+                                        placeholder = "3000"
+                                        style = {{textAlign: "right"}}
+                                        keyboardType = 'numeric'
+                                        maxLength={6}/>
+                                    <Text style = {{fontSize: 17, fontWeight: "500", color: "gray"}}>&nbsp;cal</Text>
+                                </View>
+                            </View>
+                            <View style = {styles.bottomButton}>
+                                <Text style = {{fontSize: 16, color: "gray"}}>📍 Location</Text>
+                                <View style = {{flexDirection: "row"}}>
+                                    <TextInput
+                                        value={location}
+                                        onChangeText={(location: string) => setLocation(location)}
+                                        placeholder = "LA Gym"
+                                        style = {{textAlign: "right"}}
+                                        keyboardType = 'numeric'
+                                        maxLength={6}/>
+                                </View>
+                            </View>
                         </View>
                     </View>
-                </View>
-            </KeyboardAvoidingView>
-    </Modal>
-  );
+                </KeyboardAvoidingView>
+        </Modal>
+    );
 }
 
 export default CreateCommitModal;
